@@ -1,0 +1,130 @@
+## MATH GAME SIDE PROJECT ##
+## DESIGNED BY THARMENDRAH SIVAKUMAR
+
+def primary_school_quiz(flag, n):
+    ''' (booleam, integer) -> number
+BB
+    Returns the number of questions answered correctly givem, what type of
+    problem the pupil favors and the amount of questions the pupil wants to dod
+    '''
+    import math
+    import random
+    from random import randrange, uniform
+
+#SUBTRACTION----SUBTRACTION
+
+    flag = int(input(name + ' what would you like to practice? Enter \n0 for subtraction \n1 for exponentiation \n'))
+    n = int(input('How many practice questions would you like to do? \n'))
+    if (flag == 0):
+        correctAns = 0
+        rand1 = 0
+        rand2 = 0
+        print(name + ', here is your 4 questions:')
+        for i in range(n):
+            rand1 = randrange(0,10)
+            rand2 = randrange(0,10)
+            answer = input('Question ' + str(i + 1) + ':' + '\n' + 'What is the result of ' + str(rand1) + ' - ' + str(rand2) + '? ')
+            if (int(answer) == int(rand1 - rand2)):
+                correctAns = correctAns + 1
+
+#EXPONENTIAL----EXPONENTIAL
+    elif (flag == 1):
+        correctAns = 0
+        rand1 = 0
+        rand2 = 0
+        for i in range(n):
+            rand1 = randrange(0,10)
+            rand2 = randrange(0,10)
+            answer = input('Question ' + str(i + 1) + ':' + '\n' + 'What is the result of ' + str(rand1) + ' ^ ' + str(rand2) + '? ')
+            if (int(answer) == int(rand1 ** rand2)):
+                correctAns = correctAns + 1
+    percentage = (correctAns / n)*100
+    if (percentage >= 90):
+        print("Congratulations " + name + '! You"11 probably get an A tomorrow. Now go and eat your dinner and go to sleep.')
+    elif (percentage >= 70 and percentage < 90):
+        print("You did well " + name + ', but I know you can do better.')
+    elif (percentage < 70):
+        print ('I think you need some more practice ' + name + '!')
+
+def high_school_eqsolver(a,b,c):
+    ''' (number, number, number) -> number
+
+    Returns the solutions for the coefficients inputed by the user
+
+    Precondition: parameters a, b, and c must be numbers
+
+    '''
+    import cmath
+    import math
+    d = (b**2) - (4*a*c)
+    if (a == 0 and b == 0 and c == 0):
+        print('The quadratic equation ' + str(b) + '*x ' + str(c) + ' = 0'
+              + '\n' + 'is satisfied for all number of x')
+    elif (a == 0 and b == 0):
+        print('The linear equation ' + str(b) + '*x ' + str(c) + ' = 0'
+              + '\n' + 'is satisfied for no number of x')
+    elif (a == 0):
+        print('The linear equation ' + str(b) + '*x ' + str(c) + ' = 0'
+              + '\n' + 'has the following rool/equation: ' + str(-c/2))
+    elif (d > 0):
+        sol1 = (-b+(math.sqrt(d)))/(2*a)
+        sol2 = (-b-(math.sqrt(d)))/(2*a)
+        print('The quadratic equation ' + str(a) +
+              '*x^2 + ' + str(b) + '*x + ' + str(c) +
+              ' = 0' + '\n' + 'has the following roots: ' + '\n' +
+              str(sol1) + ' and ' + str(sol2))
+    elif (d < 0):
+        d2 = b*b-4*a*c
+        discRoot = (cmath.sqrt(d2))
+        sol1 = (-b + discRoot) / (2 * a)
+        sol2 = (-b - discRoot) / (2 * a)
+        print('The quadratic equation ' + str(a) +
+              '*x^2 + ' + str(b) + '*x + ' + str(c) + ' = 0' + '\n' +
+              'has the following two complex roots: ' + '\n' +
+              str(sol1) + '\n' + '   and ' + '\n' + str(sol2))
+    elif (d == 0):
+        x = (-b+math.sqrt(b**2-4*a*c))/2*a
+        print('The quadratic equation ' + str(a) +
+              '*x^2 + ' + str(b) + '*x + ' + str(c) + ' = 0' + '\n' +
+              'has only one solution, a real root: ' + '\n' + str(x))
+
+# main
+
+
+
+print(59*'*' + '\n' + '*' + str(57*' ') + '*' + '\n' +
+      '* __Welcome to my math quiz-generator / equation-solver__ *' +
+      '\n' + '*' + str(57*' ') + '*' + '\n' + (59*'*'))
+name=input("What is your name? ")
+status=input("Hi "+name+". Are you in? Enter \n1 for primary school\n2 for high school or\n3 for none of the above?\n")
+if status=='1':
+    print(69*'*' + '\n' + '*' + str(67*' ') + '*' + '\n' +
+      '* __Welcome to my math quiz-generator for primary school students__ *' +
+      '\n' + '*' + str(67*' ') + '*' + '\n' + (69*'*'))
+    flag = 0
+    n = 0
+    primary_school_quiz(flag, n)
+elif status=='2':
+
+    print(59*'*' + len(name)*'*' + '\n' + '*' + (57*' ') + str(len(name)*' ') + '*' + '\n' +
+          '* __quadratic equation, a*x^2 + b*x + x = 0, solver for ' + name + '__ *' +
+          '\n' + '*' + str(57*' ') + str(len(name)*' ') + '*' + '\n' + (59*'*') + len(name)*'*')
+    flag=True
+    while flag:
+        question=str.lower(input(name+", would you like a quadratic equation solved? "))
+ 
+        if question!= "yes":
+            flag=False
+        else:
+            print("Good choice!")
+            # your code goes here (i.e ask for coefficients a,b and c and call)
+            # then make a function call and pass to the fucntion
+            # the three coefficients the pupil entered
+            # your code goes here
+            a = int(input('Enter a number the coefficient a: '))
+            b = int(input('Enter a number the coefficient b: '))
+            c = int(input('Enter a number the coefficient c: '))
+            high_school_eqsolver(a,b,c)
+else:
+    print(name + ' you are not the target audience of this software.')
+print("Good bye " + name + "!")
